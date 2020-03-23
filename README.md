@@ -3,7 +3,7 @@
 </head>
 <div id="tester" style="width:600px;height:250px;"></div>
 <div id="myDiv" style="width:600px;height:250px;"></div>
-<div id="myDiv1" style="width:600px;height:250px;"></div>
+<div id="myDiv1"></div>
 <script>
 	TESTER = document.getElementById('tester');
 	Plotly.newPlot( TESTER, [{
