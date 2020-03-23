@@ -159,7 +159,10 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 
   var frames = []
   var slider_steps = []
-
+  
+  max_cases = Plotly.d3.max(rows, function(d) { return +d.Cases; })
+  max_cases = Math.ceil(max_cases/200)*200
+  
   var n = 11;
   var num = new Date('2020-03-06');
   for (var i = 0; i <= n; i++) {
@@ -188,7 +191,7 @@ var data = [{
       text: frames[0].data[0].locations,
       zauto: false,
       zmin: 0,
-      zmax: 90
+      zmax: max_cases
 
 }];
   
