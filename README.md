@@ -151,61 +151,53 @@ Plotly.newPlot('myDiv1', data, layout).then(function() {
 </script>
 
 <script>
-var data = [{
-  type: "choroplethmapbox", locations: ["NY", "MA", "VT"], z: [-50, -10, -20],
-  geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json"
-}];
+Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cantons.csv", function(err, rows){
 
-var layout = {mapbox: {center: {lon: -74, lat: 43}, zoom: 3.5},
-              width: 600, height:400};
-
-var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};
-
-Plotly.newPlot('myDiv', data, layout, config);
-</script>
-
-<script>
-Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function(err, rows){
-
-  function filter_and_unpack(rows, key, year) {
-  return rows.filter(row => row['year'] == year).map(row => row[key])
+  function filter_and_unpack(rows, key, date) {
+  return rows.filter(row => row['Date'] == date).map(row => row[key])
   }
 
   var frames = []
   var slider_steps = []
 
   var n = 11;
-  var num = 1952;
+  var num = new Date('2020-03-06');
   for (var i = 0; i <= n; i++) {
-    var z = filter_and_unpack(rows, 'lifeExp', num)
-    var locations = filter_and_unpack(rows, 'iso_alpha', num)
-    frames[i] = {data: [{z: z, locations: locations, text: locations}], name: num}
+    num_str = num.toISOString().substr(0,10)
+    var z = filter_and_unpack(rows, 'Cases', num_str)
+    var locations = filter_and_unpack(rows, 'Canton', num_str)
+    frames[i] = {data: [{z: z, locations: locations, text: locations}], name: num_str}
     slider_steps.push ({
-        label: num.toString(),
+        label: num_str,
         method: "animate",
-        args: [[num], {
+        args: [[num_str], {
             mode: "immediate",
             transition: {duration: 300},
             frame: {duration: 300}
           }
         ]
       })
-    num = num + 5
+    num.setDate(num.getDate() + 1)
   }
 
 var data = [{
-      type: 'choropleth',
-      locationmode: 'world',
+      type: "choroplethmapbox",
+      geojson: "https://raw.githubusercontent.com/flobrec/plotly/master/swiss_cantons.json",
       locations: frames[0].data[0].locations,
       z: frames[0].data[0].z,
       text: frames[0].data[0].locations,
       zauto: false,
-      zmin: 30,
+      zmin: 0,
       zmax: 90
 
 }];
+  
+var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};  
+  
 var layout = {
     title: 'World Life Expectency<br>1952 - 2007',
+    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
+              width: 1000, height:800,
     geo:{
        scope: 'world',
        countrycolor: 'rgb(255, 255, 255)',
@@ -279,11 +271,12 @@ var layout = {
       }
     }]
 };
+  
 
-Plotly.newPlot('myDiv2', data, layout).then(function() {
+Plotly.newPlot('myDiv2', data, layout,config).then(function() {
     Plotly.addFrames('myDiv2', frames);
   });
-})
+});
 
 </script>
 ## Welcome to GitHub Pages
