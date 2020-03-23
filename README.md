@@ -1,7 +1,14 @@
 <head>
                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
-
+<div id="tester" style="width:600px;height:250px;"></div>
+<script>
+	TESTER = document.getElementById('tester');
+	Plotly.newPlot( TESTER, [{
+	x: [1, 2, 3, 4, 5],
+	y: [1, 2, 4, 8, 16] }], {
+	margin: { t: 0 } } );
+</script>
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/flobrec/plotly/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
