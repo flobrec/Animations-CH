@@ -20,7 +20,7 @@ var data = [{
 var layout = {mapbox: {center: {lon: -74, lat: 43}, zoom: 3.5},
               width: 600, height:400};
 
-var config = {mapboxAccessToken: "your access token"};
+var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};
 
 Plotly.newPlot('myDiv', data, layout, config);
 </script>
