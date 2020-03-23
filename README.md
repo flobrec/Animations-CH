@@ -2,12 +2,27 @@
                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <div id="tester" style="width:600px;height:250px;"></div>
+<div id="myDiv" style="width:600px;height:250px;"></div>
 <script>
 	TESTER = document.getElementById('tester');
 	Plotly.newPlot( TESTER, [{
 	x: [1, 2, 3, 4, 5],
 	y: [1, 2, 4, 8, 16] }], {
 	margin: { t: 0 } } );
+</script>
+
+<script>
+var data = [{
+  type: "choroplethmapbox", locations: ["NY", "MA", "VT"], z: [-50, -10, -20],
+  geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json"
+}];
+
+var layout = {mapbox: {center: {lon: -74, lat: 43}, zoom: 3.5},
+              width: 600, height:400};
+
+var config = {mapboxAccessToken: "your access token"};
+
+Plotly.newPlot('myDiv', data, layout, config);
 </script>
 ## Welcome to GitHub Pages
 
