@@ -1,8 +1,12 @@
 <head>
-               <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
+
+# Cases per Canton
 <div id="myDivCases" style="width:1000px;height:800px;"></div>
+# Cases per Canton per 100k Inhabitants
 <div id="myDivCphk" style="width:1000px;height:800px;"></div>
+
 <div id="myDiv2"></div>
 
 <script>
@@ -77,7 +81,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	  
 	var layout = {
     paper_bgcolor: 'darkgray',
-	    title: 'World Life Expectency<br>1952 - 2007',
 	    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
 	              width: 1000, height:800,
 	    geo:{
@@ -154,51 +157,18 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	    }]
 	};
 	  
-	layout['title']= 'Cases per Canton'
 	Plotly.newPlot('myDivCases', data_cases, layout,config).then(function() {
 	    Plotly.addFrames('myDivCases', frames_cases);
 	  });
-  layout['title']= 'Cases per Canton per 100k Inhabitants'
-  Plotly.newPlot('myDivCphk', data_cphk, layout,config).then(function() {
+	Plotly.newPlot('myDivCphk', data_cphk, layout,config).then(function() {
 	    Plotly.addFrames('myDivCphk', frames_cphk);
 	  });
   
 	});
 </script>
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/flobrec/plotly/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/flobrec/plotly/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Case numbers by courtesy of [corona-data.ch](https://www.corona-data.ch/).
