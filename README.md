@@ -61,7 +61,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	  
 	var layout = {
     paper_bgcolor: 'darkgray',
-	    title: 'World Life Expectency<br>1952 - 2007',
+	    title: 'Number of Cases per Canton',
 	    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
 	              width: 1000, height:800,
 	    geo:{
