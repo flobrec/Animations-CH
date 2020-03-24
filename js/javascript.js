@@ -1,4 +1,3 @@
-<script>
 Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cantons.csv", function(err, rows){
 	
 	  function filter_and_unpack(rows, key, date) {
@@ -156,4 +155,3 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	  });
   
 	});
-</script>  
