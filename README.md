@@ -3,9 +3,9 @@
 </head>
 
 # Cases per Canton
-<div id="myDivCases" style="width:1000px;height:800px;"></div>
+<!--<div id="myDivCases" style="width:1000px;height:800px;"></div>-->
 # Cases per Canton per 100k Inhabitants
-<div id="myDivCphk" style="width:1000px;height:800px;"></div>
+<!--<div id="myDivCphk" style="width:1000px;height:800px;"></div>-->
 
 
 <script>
