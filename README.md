@@ -7,7 +7,6 @@
 # Cases per Canton per 100k Inhabitants
 <div id="myDivCphk" style="width:1000px;height:800px;"></div>
 
-<div id="myDiv2"></div>
 
 <script>
 Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cantons.csv", function(err, rows){
@@ -166,9 +165,5 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
   
 	});
 </script>
-
-
-[Link](url) and ![Image](src)
-```
 
 Case numbers by courtesy of [corona-data.ch](https://www.corona-data.ch/).
