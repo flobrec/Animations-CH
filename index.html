@@ -87,20 +87,20 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	      text: frames_cphk[0].data[0].locations,
 	      zauto: false,
 	      zmin: 0,
-	      zmax: max_cphk
-	
+	      zmax: max_cphk,
 	}];
 	  
 	var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};  
 	  
 	var layout = {
-    title: {text: 'Cases per Canton',
-           font: {size: 28, color: color_sand},
-           },
+    font: {color: color_sand},
     paper_bgcolor: color_dark,
-	    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
-	              width: 1000, height:800,
-	    geo:{
+    title: {text: 'Cases per Canton',
+           font: {size: 28},
+           },
+    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
+    width: 1000, height:800,
+    geo:{
 	       scope: 'world',
 	       countrycolor: 'rgb(255, 255, 255)',
 	       showland: true,
@@ -118,11 +118,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	      xanchor: "right",
 	      showactive: false,
 	      direction: "left",
-        font: {
-            size: 10,
-	          color: color_sand
-	        },
-        
+        font: {size: 10},
 	      type: "buttons",
 	      pad: {"t": 60, "r": 10,},
 	      buttons: [{
@@ -158,9 +154,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	      active: 0,
         tickcolor: color_sand,
         bgcolor: color_sand,
-        font: {
-	          color: color_sand
-	        },
 	      steps: slider_steps,
 	      x: 0.1,
 	      len: 0.9,
@@ -187,10 +180,10 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	Plotly.newPlot('myDivCases', data_cases, layout,config).then(function() {
 	    Plotly.addFrames('myDivCases', frames_cases);
 	  });
-	var layout_cphk = JSON.parse(JSON.stringify(layout))
-	layout_cphk.title.text='Cases per Canton per 100k Inhabitants'
+  var layout_cphk = JSON.parse(JSON.stringify(layout))
+  layout_cphk.title.text='Cases per Canton per 100k Inhabitants'
   
-	Plotly.newPlot('myDivCphk', data_cphk, layout_cphk,config).then(function() {
+	Plotly.newPlot('myDivCphk', data_cphk, layout_cphk, config).then(function() {
 	    Plotly.addFrames('myDivCphk', frames_cphk);
 	  });
   
