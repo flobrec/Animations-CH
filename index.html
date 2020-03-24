@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
 <head>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-<section class="w3-container w3-center" style="max-width:600px">
-	<h2 class="w3-wide">Cases per Canton</h2>
+  <div class="w3-light-grey">
+<section class="w3-container w3-center" style="width:1000px">
+	<h1 class="w3-center">Cases per Canton</h2>
 	<div id="myDivCases" style="width:1000px;height:800px;">
 </section>
 
-<section class="w3-container w3-center" style="max-width:600px">
-	<h2 class="w3-wide">Cases per Canton per 100k Inhabitants</h2>
+<section class="w3-container w3-center" style="width:1000px">
+	<h1 class="w3-center">Cases per Canton per 100k Inhabitants</h2>
 	<div id="myDivCphk" style="width:1000px;height:800px;"></div>
 </section>
 
@@ -23,7 +27,7 @@
     Data by courtesy of <a href="https://www.corona-data.ch" target="_blank">corona-data.ch</a>
   </p>
 </footer>
-
+</div>
 
 <script>
 Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cantons.csv", function(err, rows){
@@ -96,7 +100,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};  
 	  
 	var layout = {
-    paper_bgcolor: 'darkgray',
+    paper_bgcolor: 'rgb(251, 251, 251)',
 	    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
 	              width: 1000, height:800,
 	    geo:{
