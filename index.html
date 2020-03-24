@@ -6,8 +6,8 @@
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
-<body>
-	<div class="w3-light-grey">
+<body style="background-color:#202020">
+	<!-- <div class="w3-light-grey"> -->
 		<section class="w3-container w3-center" style="width:1000px">
 			<div id="myDivCases" style="width:1000px;height:800px;"></div>
 		</section>
@@ -16,19 +16,20 @@
 			<div id="myDivCphk" style="width:1000px;height:800px;"></div>
 		</section>
 		<!-- Footer -->
-		<footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge">
+		<footer class="w3-container w3-padding-64 w3-center w3-dark-grey w3-xlarge">
 			<p class="w3-medium">
 				Data by courtesy of <a href="https://www.corona-data.ch" target="_blank">corona-data.ch</a>
 			</p>
 		</footer>
-	</div>
+	<!--</div> -->
 <script>
 Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cantons.csv", function(err, rows){
 	
 	  function filter_and_unpack(rows, key, date) {
 	  return rows.filter(row => row['Date'] == date).map(row => row[key])
 	  }
-	
+	  var color_sand = "#fdf5e6"
+    var color_dark = "#202020"
 	  var frames_cases = []
     var frames_cphk = []
 	  var slider_steps = []
@@ -93,11 +94,13 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};  
 	  
 	var layout = {
-		title: {text: 'Cases per Canton',font: {size: 28},},
-		paper_bgcolor: 'rgb(241, 241, 241)',
-		mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
+    title: {text: 'Cases per Canton',
+           font: {size: 28, color: color_sand},
+           },
+    paper_bgcolor: color_dark,
+	    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
 	              width: 1000, height:800,
-		geo:{
+	    geo:{
 	       scope: 'world',
 	       countrycolor: 'rgb(255, 255, 255)',
 	       showland: true,
@@ -115,8 +118,13 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	      xanchor: "right",
 	      showactive: false,
 	      direction: "left",
+        font: {
+            size: 10,
+	          color: color_sand
+	        },
+        
 	      type: "buttons",
-	      pad: {"t": 87, "r": 10},
+	      pad: {"t": 60, "r": 10,},
 	      buttons: [{
 	        method: "animate",
 	        args: [null, {
@@ -143,11 +151,16 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	            }
 	          }
 	        ],
-	        label: "Pause"
+	        label: "Pause",
 	      }]
 	    }],
 	    sliders: [{
 	      active: 0,
+        tickcolor: color_sand,
+        bgcolor: color_sand,
+        font: {
+	          color: color_sand
+	        },
 	      steps: slider_steps,
 	      x: 0.1,
 	      len: 0.9,
@@ -157,11 +170,11 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	      pad: {t: 50, b: 10},
 	      currentvalue: {
 	        visible: true,
-	        prefix: "Date:",
+	        prefix: "Date: ",
 	        xanchor: "right",
 	        font: {
-	          size: 20,
-	          color: "#666"
+	          size: 16,
+	          color: color_sand
 	        }
 	      },
 	      transition: {
@@ -174,7 +187,9 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	Plotly.newPlot('myDivCases', data_cases, layout,config).then(function() {
 	    Plotly.addFrames('myDivCases', frames_cases);
 	  });
-	layout.title.text='Cases per Canton per 100k Inhabitants'
+  
+  layout.title.text='Cases per Canton per 100k Inhabitants'
+  
 	Plotly.newPlot('myDivCphk', data_cphk, layout,config).then(function() {
 	    Plotly.addFrames('myDivCphk', frames_cphk);
 	  });
