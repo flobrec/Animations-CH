@@ -2,7 +2,7 @@
                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <div id="myDivCases" style="width:1000px;height:800px;"></div>
-<div id="myDiv1"></div>
+<div id="myDivCphk" style="width:1000px;height:800px;"></div>
 <div id="myDiv2"></div>
 
 <script>
