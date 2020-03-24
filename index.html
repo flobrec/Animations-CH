@@ -11,12 +11,10 @@
 <body>
   <div class="w3-light-grey">
 <section class="w3-container w3-center" style="width:1000px">
-	<h1 class="w3-center">Cases per Canton</h2>
 	<div id="myDivCases" style="width:1000px;height:800px;">
 </section>
 
 <section class="w3-container w3-center" style="width:1000px">
-	<h1 class="w3-center">Cases per Canton per 100k Inhabitants</h2>
 	<div id="myDivCphk" style="width:1000px;height:800px;"></div>
 </section>
 
@@ -100,10 +98,11 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	var config = {mapboxAccessToken: "pk.eyJ1IjoiZmxvYnJlY2h0IiwiYSI6ImNrODRoaHI0bzE5bWYzdG1zMTZ4NmYxZTUifQ.vrpEIGfPE92RFKgQnYbPxA"};  
 	  
 	var layout = {
-    paper_bgcolor: 'rgb(241, 241, 241)',
-	    mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
+		title: {text: 'Cases per Canton',font: {size: 28},},
+		paper_bgcolor: 'rgb(241, 241, 241)',
+		mapbox: {style:'carto-darkmatter', center: {lon: 8.3, lat: 47.05}, zoom: 6.5},
 	              width: 1000, height:800,
-	    geo:{
+		geo:{
 	       scope: 'world',
 	       countrycolor: 'rgb(255, 255, 255)',
 	       showland: true,
@@ -180,6 +179,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/flobrec/plotly/master/data_cant
 	Plotly.newPlot('myDivCases', data_cases, layout,config).then(function() {
 	    Plotly.addFrames('myDivCases', frames_cases);
 	  });
+	layout.title.text='Cases per Canton per 100k Inhabitants'
 	Plotly.newPlot('myDivCphk', data_cphk, layout,config).then(function() {
 	    Plotly.addFrames('myDivCphk', frames_cphk);
 	  });
